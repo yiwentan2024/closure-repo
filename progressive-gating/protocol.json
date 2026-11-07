@@ -1,0 +1,562 @@
+{
+  "batch_plan": {
+    "calibration": {
+      "arms": [
+        "P0",
+        "P1"
+      ],
+      "attempts_per_workflow_run": 2,
+      "batch_id": "PG-CAL-01",
+      "builds": 3,
+      "pairs": 3,
+      "purpose": "pairing-mechanics calibration only; not included in the formal denominator",
+      "repeats": 1,
+      "runs": 6,
+      "scenarios": [
+        "PG-N01",
+        "PG-ART",
+        "PG-DISP"
+      ],
+      "workflow_runs": 3
+    },
+    "formal": {
+      "arms": [
+        "P0",
+        "P1"
+      ],
+      "attempts_per_workflow_run": 2,
+      "batch_id": "PG-FORMAL-01",
+      "builds": 18,
+      "pairs": 18,
+      "purpose": "official progressive-gating measurement",
+      "repeat_note": "three repeats per scenario are consistency checks, not three independent scenarios",
+      "repeats": 3,
+      "runs": 36,
+      "scenarios": [
+        "PG-N01",
+        "PG-ART",
+        "PG-QA",
+        "PG-DISP",
+        "PG-SEQ",
+        "PG-INFO"
+      ],
+      "workflow_runs": 18
+    }
+  },
+  "collector": {
+    "collector_rule_sha256": "sha256:358b7ba838892cc5bcc2cdc0cf3509514b89ccc30510f3a3a7e78f0fc7142a62",
+    "evidence_statuses": [
+      "PENDING",
+      "OPEN",
+      "NFI",
+      "NOT_APPLICABLE"
+    ],
+    "injection_record": {
+      "fields": [
+        "change_point and declared_injection",
+        "applied and per-scenario before/after details",
+        "baseline_gate_effect and baseline_condition_impact",
+        "platform_error"
+      ],
+      "injector_version": "pg-inject-1.0.0",
+      "rule": "A platform error is not accepted as the declared injection, and an injection is not inferred from one.",
+      "schema": "pg-injection-1"
+    },
+    "machine_decisions": [
+      "CLOSED",
+      "OPEN"
+    ],
+    "minimal_fields": [
+      "native run identity (run key, arm, build, workflow, commit)",
+      "release binding (episode, service, environment chain, approved artifact digest)",
+      "candidates and dispositions (inventory digest, missing items, empty-set distinction)",
+      "history and successor (cutoff, audit time, findings, successor identity, frozen snapshot digest)",
+      "provenance tags: native / derived / declared / scripted / unavailable",
+      "release-stage records (container ID, image ID, image tag, expected and deployed pyz digest, HTTP status, gate status)"
+    ],
+    "missing_vs_empty": "A missing value is recorded as unavailable or as an explicit missing item; it is never replaced by an empty set or a default PASS.",
+    "nfi_rule": "NFI is a subclass of machine OPEN. It is shown separately but never added to the OPEN total a second time.",
+    "rule": {
+      "collector": "pg-collector",
+      "disposition_authority": "CI_health_gate",
+      "inventory": "bounded stage-health inventory emitted by the staged runner",
+      "transport": "live HTTP GET /health per stage",
+      "version": "1.0.0",
+      "window": "dev -> qa -> staging, one signal per deployed stage"
+    }
+  },
+  "denominators": {
+    "audit_contrast_pairs": "only selected comparable pairs whose two baseline outcomes are PASS and whose scenario requires an audit case",
+    "baseline_control_pairs": "PG-ART and PG-QA selected comparable pairs, reported separately and never mixed into the audit-contrast numerator",
+    "formal_pairs": 18,
+    "formal_runs": 36,
+    "formal_scenarios": 6,
+    "scenario_counts_are_not_pooled": true
+  },
+  "design": {
+    "identity_types": {
+      "attestation_subject": "the .pyz file; the deployed object is an OCI image, so both identities and the verified binding are recorded",
+      "deployed_artifact": "sha256 measured inside the running stage container",
+      "oci_image": "Docker image config digest recorded separately; never compared numerically with the pyz digest",
+      "pinned_artifact": "sha256 of dist/release_app.pyz bytes written by tools/build.py"
+    },
+    "per_stage_gate": [
+      "docker compose up -d --no-build <stage>",
+      "docker inspect container identity",
+      "docker exec <container> sha256sum /srv/release_app.pyz",
+      "digest equals the pinned artifact digest",
+      "live HTTP GET /health returns 200 and body.stage == stage"
+    ],
+    "promotion": "build once -> deploy dev -> gate dev -> deploy qa -> gate qa -> deploy staging -> gate staging -> collect -> P0 not configured / P1 audit",
+    "simultaneous_start_forbidden": true,
+    "stages": [
+      "dev",
+      "qa",
+      "staging"
+    ],
+    "time_model": {
+      "native": [
+        "stage deploy times",
+        "HTTP occurrence and receipt times",
+        "gate decision times"
+      ],
+      "pairing_projection": "native stage timestamps become fixed per-stage ordinals; absolute wall-clock seconds and host ports are removed; verifier order relations are preserved; the native case.json remains the audit input",
+      "scripted": [
+        "PG-SEQ Finding observed_at / Requirement accepted_at / target times as fixed offsets from the live cutoff"
+      ]
+    }
+  },
+  "evaluation_id": "PG-STAGED-PROMOTION-01",
+  "formal_eligibility": [
+    "batch id starts with PG-FORMAL",
+    "GitHub attestation mode with verify exit 0",
+    "committed checkout (source_tree_dirty is false)",
+    "no harness exception",
+    "both arms of the selected pair valid and comparable"
+  ],
+  "generated_at_utc": "2026-11-07T05:02:30.968Z",
+  "hashes": [
+    {
+      "bytes": 9242,
+      "path": ".github/workflows/progressive-gating.yml",
+      "sha256": "78de21499852cea0182959b9b5fd2cd0de9e802e4e96ae3250fdc6a5eb5e5412"
+    },
+    {
+      "bytes": 1189,
+      "path": "app/__main__.py",
+      "sha256": "faaa4d0811a190dc3bec91e3053a2ddf7e4d1b9099ed0335477abe384e3e98e9"
+    },
+    {
+      "bytes": 174,
+      "path": "infra/Dockerfile",
+      "sha256": "52e75a8522ccdd544c19bff8ce2778559c4177841ea9d7f70dda230a437109e9"
+    },
+    {
+      "bytes": 1146,
+      "path": "infra/compose.pg.yml",
+      "sha256": "d943899a609b2a7237deed59f7ac836ded3fd05db49078055abd280a3415c9d8"
+    },
+    {
+      "bytes": 18919,
+      "path": "progressive-gating/README_Reproduction.txt",
+      "sha256": "56f0dd9785e7e21cca0dd08c3fba59b48c6a46acf003f6ff809af72bd5435f36"
+    },
+    {
+      "bytes": 934,
+      "path": "progressive-gating/cases/PG-ART.json",
+      "sha256": "17f0cc8981496a3c26df884a6646e66696fa6da8846246d12cd631d4cd1ca6a0"
+    },
+    {
+      "bytes": 923,
+      "path": "progressive-gating/cases/PG-DISP.json",
+      "sha256": "3fb2e247ff00fa48ebcabc02b79eb92419ca659b2bcf81834c0b4a2bc4d786ea"
+    },
+    {
+      "bytes": 1043,
+      "path": "progressive-gating/cases/PG-INFO.json",
+      "sha256": "7d7f08a88f49c42fdec06149a8168e42386fa8a547579ac42d0625f74e01c222"
+    },
+    {
+      "bytes": 757,
+      "path": "progressive-gating/cases/PG-N01.json",
+      "sha256": "46105b62c8b180d40ce4d18a0eda1e53764ccdad0c0241543377e457b776734e"
+    },
+    {
+      "bytes": 895,
+      "path": "progressive-gating/cases/PG-QA.json",
+      "sha256": "7cf5be75397e7bfb7ceacbdbaaea7bd79c0f0fd729c3638a2f25c01e50d676e3"
+    },
+    {
+      "bytes": 1075,
+      "path": "progressive-gating/cases/PG-SEQ.json",
+      "sha256": "3c6b2112b033490ba73a3db6c42a2976879e5f2b8a30f574de8fa82ece8f0013"
+    },
+    {
+      "bytes": 7189,
+      "path": "scenarios/19_cases_master.csv",
+      "sha256": "16eee408a5113cd1f7ff1a9979e4e17d6e6ffbcde401b01e7d0ca01cb7df73f8"
+    },
+    {
+      "bytes": 18716,
+      "path": "scenarios/build_case.py",
+      "sha256": "094d57bcf8eeed1c5bd6647d3edf18f494394f936c8771fbea8e1521aea104ca"
+    },
+    {
+      "bytes": 11811,
+      "path": "scenarios/manifest.json",
+      "sha256": "593804b8df9e8f308746f7567c851b862b07d90f6bee30d5bfa438b87db9fd8c"
+    },
+    {
+      "bytes": 3271,
+      "path": "tests/test_a2_boundaries.py",
+      "sha256": "e49041f32daa3847b49807d4a50b0b105ca60f8bde09cf311291c8a4c4b10c88"
+    },
+    {
+      "bytes": 1294,
+      "path": "tests/test_app.py",
+      "sha256": "635e18fe1355ac6eef4987f5b2dd459cfe0a4cfad6fd5bbae3646f80dfef1d42"
+    },
+    {
+      "bytes": 340,
+      "path": "tests/test_baseline_injection.py",
+      "sha256": "43ff3b12d4801ddc4959787262fb3af8302f8db4b5528c79ad9bfaf44fab6533"
+    },
+    {
+      "bytes": 1624,
+      "path": "tests/test_csv_structure.py",
+      "sha256": "e53783b67929a44c971104748f166a13b55043b0b735556d08eb37b062f7fbab"
+    },
+    {
+      "bytes": 2044,
+      "path": "tests/test_e2_cases.py",
+      "sha256": "e293ffaf68d0860ff1d54f429452112c6a74a372808b0be6d770d4a01fe01c46"
+    },
+    {
+      "bytes": 9286,
+      "path": "tests/test_owner_records.py",
+      "sha256": "3349cdcc21c8dd46f3309da544d761b9eba991d1ae81e484a5036d16b4bde6c0"
+    },
+    {
+      "bytes": 0,
+      "path": "tests_pg/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 6195,
+      "path": "tests_pg/pg_fixtures.py",
+      "sha256": "561a3d9af3ff4ddb66891e924cf0509117d3e672d8a94f940a2310c8fd4898ae"
+    },
+    {
+      "bytes": 5640,
+      "path": "tests_pg/test_pg_archive.py",
+      "sha256": "d9733d04df5d94284cc95114fa7343bfb69e21e440d0c3dbb5930d8d1dc2e9aa"
+    },
+    {
+      "bytes": 4541,
+      "path": "tests_pg/test_pg_build.py",
+      "sha256": "8b6f6224b09e12c4e15ddc91459db8542217d0dcece965c3b5e0af2817f53da5"
+    },
+    {
+      "bytes": 9462,
+      "path": "tests_pg/test_pg_cases.py",
+      "sha256": "3e1578cfabd7a9e03b83654d28607b86a290a8d3d9f567912985b9285669ecaa"
+    },
+    {
+      "bytes": 8562,
+      "path": "tests_pg/test_pg_ledger.py",
+      "sha256": "1a508bdb5e9bb6de6380fb525119a8d6cefeedd1d42e9008d76b54126ea06a62"
+    },
+    {
+      "bytes": 2532,
+      "path": "tests_pg/test_pg_protocol.py",
+      "sha256": "31cef65d565c61a19f68ed4abd5c23acbbc73ef55d41d623ba777444d25e57c0"
+    },
+    {
+      "bytes": 5753,
+      "path": "tests_pg/test_pg_workflow.py",
+      "sha256": "8240213b20ebae7ae5b9b39918bab5f0ff61ffb6ada666479427b537b6f48fb9"
+    },
+    {
+      "bytes": 679,
+      "path": "tools/build.py",
+      "sha256": "2b317d68b8fb4fac696c8c8057cfcde1f77e1c90d6d7c4c35aecf177db92e606"
+    },
+    {
+      "bytes": 955,
+      "path": "tools/check_frozen_manifest.py",
+      "sha256": "4397d76fc57f579378fa782635d5b9a172b5ec391770a6caf7e470009a3347f6"
+    },
+    {
+      "bytes": 9156,
+      "path": "tools/pg_archive.py",
+      "sha256": "1c4914429fbc066cc2ed9f94a10dd6f252768527c92d1308f187f663305ebc3d"
+    },
+    {
+      "bytes": 13128,
+      "path": "tools/pg_build.py",
+      "sha256": "4cbc359afe8b2e67007084043f9fd31824b2235bbf95518c25d655e558d450cd"
+    },
+    {
+      "bytes": 17871,
+      "path": "tools/pg_case.py",
+      "sha256": "bb3e49e469d49bd4144f087e9f88d3caa2d0e212d0564934183cd4a5466ce138"
+    },
+    {
+      "bytes": 5609,
+      "path": "tools/pg_common.py",
+      "sha256": "e40130a91343e60ebba0456aff345c1c0e5d3808182f357a0a2817bbe3373d3c"
+    },
+    {
+      "bytes": 39561,
+      "path": "tools/pg_ledger.py",
+      "sha256": "cd6a2094bde42dec145b34d7204af48ea9dd1d971585bfbef4a21846e920cf80"
+    },
+    {
+      "bytes": 26693,
+      "path": "tools/pg_promote.py",
+      "sha256": "dee90fa70f2724d00a3a551add0d223dc4329c7b080cb2001589e93d0bda5a1e"
+    },
+    {
+      "bytes": 13351,
+      "path": "tools/pg_protocol.py",
+      "sha256": "08e890a5dbbb5baa30c162d2ce31810da9d22d724e19963425c99392e440bc0d"
+    },
+    {
+      "bytes": 30296,
+      "path": "tools/pg_run.py",
+      "sha256": "2013ebf9370f77a3e72fe7626445ffd32c73940e34e1be85fdda162665d4abf4"
+    },
+    {
+      "bytes": 13092,
+      "path": "verifier/closure_audit.py",
+      "sha256": "684973ce2b15949756925196a70d7168fbfd0d1026ece52bc2e1e207696c73e1"
+    }
+  ],
+  "pairing_rules": {
+    "arm_order": "alternates P0>P1 and P1>P0 by repeat; the order is recorded but is not a scenario variable",
+    "batch_immutability": "the formal and calibration batch ids in this protocol are frozen; a configuration change requires a new protocol and a new batch",
+    "both_arms_valid_execution": true,
+    "excluded_from_formal": [
+      "any attempt whose pair is not comparable",
+      "non-selected retry attempts",
+      "runs without GitHub attestation",
+      "runs from a dirty source tree",
+      "calibration batches"
+    ],
+    "retry_selection": "first comparable attempt per (batch, scenario, repeat); every non-selected attempt stays in runs.csv with an exclusion reason",
+    "same_audit_input": "semantic projection equality for audit cases; baseline outcome signature equality for baseline-block pairs",
+    "same_baseline_outcome": true,
+    "same_build_id": true,
+    "same_pinned_artifact_digest": true,
+    "same_scenario_design_sha256": true
+  },
+  "scenarios": [
+    {
+      "audit_expected": {
+        "P0": "NOT_CONFIGURED",
+        "P1": "CLOSED",
+        "codes": [],
+        "evidence_status": "NOT_APPLICABLE"
+      },
+      "baseline_expected": {
+        "dev": "PASS",
+        "first_failure_code": null,
+        "first_failure_stage": null,
+        "qa": "PASS",
+        "staging": "PASS"
+      },
+      "design_sha256": "sha256:1d7eae5b2c1927b1deb54d6cc5c2a4a4482ec0c51f49fff3a118a6628f5282e3",
+      "id": "PG-N01",
+      "required_evidence": [
+        "ordered deploy/check/gate events for dev, qa, staging",
+        "same measured pyz digest at every stage",
+        "P1 verifier output CLOSED",
+        "P0 audit status NOT_CONFIGURED"
+      ],
+      "requires_audit_case": true,
+      "scenario_family": "N01",
+      "title": "Normal release with no injected evidence defect",
+      "type": "CONTROL"
+    },
+    {
+      "audit_expected": {
+        "P0": "NOT_RUN_UPSTREAM_BLOCKED",
+        "P1": "NOT_RUN_UPSTREAM_BLOCKED",
+        "codes": [],
+        "evidence_status": null
+      },
+      "baseline_expected": {
+        "dev": "PASS",
+        "first_failure_code": "ARTIFACT_DIGEST_MISMATCH",
+        "first_failure_stage": "qa",
+        "qa": "FAIL",
+        "staging": "NOT_DEPLOYED"
+      },
+      "design_sha256": "sha256:e739c38dcd6c37bc952e3b75d71314266f8d598ce7b9cbcf13a10f19bf761de5",
+      "id": "PG-ART",
+      "required_evidence": [
+        "expected pyz digest and measured QA pyz digest",
+        "digest gate command exit / decision and QA container identity",
+        "staging container absence after rejection",
+        "P1 audit status NOT_RUN_UPSTREAM_BLOCKED (not OPEN)"
+      ],
+      "requires_audit_case": false,
+      "scenario_family": "B01",
+      "title": "Artifact substitution at the QA gate",
+      "type": "BASELINE_BLOCK"
+    },
+    {
+      "audit_expected": {
+        "P0": "NOT_RUN_UPSTREAM_BLOCKED",
+        "P1": "NOT_RUN_UPSTREAM_BLOCKED",
+        "codes": [],
+        "evidence_status": null
+      },
+      "baseline_expected": {
+        "dev": "PASS",
+        "first_failure_code": "HEALTH_CHECK_FAILED",
+        "first_failure_stage": "qa",
+        "qa": "FAIL",
+        "staging": "NOT_DEPLOYED"
+      },
+      "design_sha256": "sha256:9903486d957b18d06f1636da141c727768d8853a9b53cf12733a87a79c989062",
+      "id": "PG-QA",
+      "required_evidence": [
+        "QA deployed pyz digest equals the pinned digest",
+        "live QA HTTP response status 503 and body",
+        "staging container absence after rejection",
+        "P1 audit status NOT_RUN_UPSTREAM_BLOCKED (not OPEN)"
+      ],
+      "requires_audit_case": false,
+      "scenario_family": "B02",
+      "title": "QA health failure after correct artifact deployment",
+      "type": "BASELINE_BLOCK"
+    },
+    {
+      "audit_expected": {
+        "P0": "NOT_CONFIGURED",
+        "P1": "OPEN",
+        "codes": [
+          "A1_EFFECTIVE_DISPOSITION_COUNT"
+        ],
+        "evidence_status": "NOT_APPLICABLE"
+      },
+      "baseline_expected": {
+        "dev": "PASS",
+        "first_failure_code": null,
+        "first_failure_stage": null,
+        "qa": "PASS",
+        "staging": "PASS"
+      },
+      "design_sha256": "sha256:75c21daec4bf2edbaa3123cce0e1ba12869123687b65def27755255366e0e1a4",
+      "id": "PG-DISP",
+      "required_evidence": [
+        "raw QA signal present in the bounded inventory",
+        "effective disposition count for the QA signal is zero",
+        "all baseline stage gates PASS",
+        "P1 OPEN with A1_EFFECTIVE_DISPOSITION_COUNT; P0 NOT_CONFIGURED"
+      ],
+      "requires_audit_case": true,
+      "scenario_family": "C01",
+      "title": "Missing effective disposition",
+      "type": "AUDIT_ONLY"
+    },
+    {
+      "audit_expected": {
+        "P0": "NOT_CONFIGURED",
+        "P1": "OPEN",
+        "codes": [
+          "A2_REQUIREMENT_TEMPORAL_ORDER"
+        ],
+        "evidence_status": "OPEN"
+      },
+      "baseline_expected": {
+        "dev": "PASS",
+        "first_failure_code": null,
+        "first_failure_stage": null,
+        "qa": "PASS",
+        "staging": "PASS"
+      },
+      "design_sha256": "sha256:050ad53442d995f36e2354cde1597599d4934827d8cb9bb4e360b6c27f9c9496",
+      "id": "PG-SEQ",
+      "required_evidence": [
+        "source cutoff and scripted Finding observation / Requirement acceptance offsets",
+        "Finding is not present in the frozen historical snapshot",
+        "frozen snapshot digest before and after the audit input build is unchanged",
+        "P1 OPEN with A2_REQUIREMENT_TEMPORAL_ORDER; P0 NOT_CONFIGURED"
+      ],
+      "requires_audit_case": true,
+      "scenario_family": "C02",
+      "title": "Post-cutoff Finding with a Requirement temporal-order violation",
+      "type": "AUDIT_ONLY"
+    },
+    {
+      "audit_expected": {
+        "P0": "NOT_CONFIGURED",
+        "P1": "OPEN",
+        "codes": [
+          "A1_SCOPE_NOT_ATTESTED"
+        ],
+        "evidence_status": "NFI"
+      },
+      "baseline_expected": {
+        "dev": "PASS",
+        "first_failure_code": null,
+        "first_failure_stage": null,
+        "qa": "PASS",
+        "staging": "PASS"
+      },
+      "design_sha256": "sha256:ec3b04c87492d73a26ea15e963302d6b37b3300f9f0c9b658fc368a020c9ec1a",
+      "id": "PG-INFO",
+      "required_evidence": [
+        "the missing query-scope field recorded as unavailable; completeness flag and collector version retained",
+        "extracted signals and inventory digest retained",
+        "P1 OPEN with evidence_status NFI and A1_SCOPE_NOT_ATTESTED",
+        "no invented empty-set or default-pass value"
+      ],
+      "requires_audit_case": true,
+      "scenario_family": "I01",
+      "title": "Missing query-scope attestation field",
+      "type": "AUDIT_ONLY"
+    }
+  ],
+  "schema": "pg-protocol-1",
+  "scope": {
+    "scenario_families": {
+      "B01": "PG-ART",
+      "B02": "PG-QA",
+      "C01": "PG-DISP",
+      "C02": "PG-SEQ",
+      "I01": "PG-INFO",
+      "N01": "PG-N01"
+    }
+  },
+  "variant_mapping": {
+    "description": {
+      "P0": "staged promotion + minimal collector; audit NOT_CONFIGURED",
+      "P1": "same staged promotion + same collector; closure audit runs after the staging gate PASS"
+    },
+    "implemented": {
+      "P0": "B1",
+      "P1": "B2"
+    }
+  },
+  "verifier": {
+    "expected_codes": {
+      "PG-DISP": [
+        "A1_EFFECTIVE_DISPOSITION_COUNT"
+      ],
+      "PG-INFO": [
+        "A1_SCOPE_NOT_ATTESTED"
+      ],
+      "PG-N01": [],
+      "PG-SEQ": [
+        "A2_REQUIREMENT_TEMPORAL_ORDER"
+      ]
+    },
+    "implementation": "closure-audit-verifier-0.4.0",
+    "invocation": "python -m verifier.closure_audit --input <case.json> --output <result.json> --allow-open",
+    "modified": false,
+    "path": "verifier/closure_audit.py"
+  }
+}

@@ -1,0 +1,3 @@
+operation_id,business_occur_utc,actor_anon,role_at_time,ref_id,disposition_result,system_export_batch_id,system_export_utc,identity_role,identity_note
+OP-SIG-FB-260820-008,2026-08-20T02:35:00Z,ANON-R-03,复核岗,R4-OP-260820-008-V1,PROVISIONAL,R4‑EXP‑B‑20260820‑1410,2026-08-23T10:13:52Z,PRIMARY,
+SIG-FB-260820-008#V2,2026-08-20T03:02:00Z,ANON-R-03,复核岗,R4-OP-260820-008-V2,ADMITTED,R4‑EXP‑B‑20260820‑1410,2026-08-23T10:13:52Z,PRIMARY,

@@ -1,0 +1,4 @@
+# Keep original bytes: frozen archives and upstream packages skip line-ending normalization
+# so hash verification passes after cloning
+* -text
+scenarios/owner_records/** -text

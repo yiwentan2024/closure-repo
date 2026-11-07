@@ -1,0 +1,128 @@
+{
+  "artifact": {},
+  "audit_time": "2026-10-20T14:45:00Z",
+  "candidates": [
+    {
+      "candidate_id": "CAND-SIG-FB-260820-010",
+      "disposition_id": "OP-SIG-FB-260820-010",
+      "signal_id": "SIG-FB-260820-010",
+      "state": "RESOLVED"
+    }
+  ],
+  "dispositions": [
+    {
+      "actor": "ANON-R-02 / Operations Executor",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-18T06:12:00Z",
+      "disposition_id": "OP-SIG-FB-260820-010",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260820-010"
+    }
+  ],
+  "findings": [],
+  "gates": [
+    {
+      "evaluated_at": "2026-08-18T06:12:00Z",
+      "gate_id": "G-SIG-FB-260820-010",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "policy": {
+    "exclusion_authorities": [],
+    "version": "ZH-RETRO-V1",
+    "waivable_gates": [],
+    "waiver_approvers": []
+  },
+  "raw_signals": [
+    {
+      "event_time": "2026-08-18T06:12:00Z",
+      "ingest_time": "2026-08-18T06:12:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-02",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-18 14:12:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260820-010",
+        "operation_receive_time": "2026-08-18 14:12:05",
+        "operation_time": "2026-08-18 14:12:00",
+        "release_id": "R-FB-2026-08-NORMAL-07",
+        "role_at_time": "Operations Executor",
+        "signal_id": "SIG-FB-260820-010",
+        "signal_type": "deployment",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:75defc3cbf9dec66d376ae40b000a5159f74a85119ffc13182676cbb78667d78",
+      "signal_id": "SIG-FB-260820-010",
+      "source_id": "att-02-ledger"
+    }
+  ],
+  "release_id": "R-FB-2026-08-NORMAL-07",
+  "schema_version": "E2-case-1",
+  "scope": {
+    "approved_sources": [
+      "att-02-ledger"
+    ],
+    "collector_attestation": {
+      "collector_version": "provider export pipeline",
+      "complete": true,
+      "declared_export_sha256": "5ba663605096de7b4ea65fb5d682ddbdb78b2e6aa3c064bf106637f632379459",
+      "inventory_sha256": "sha256:67983e410a0db1c7cd9805a32d212285b397187995f7c4c355a83fcf086292fd",
+      "materialized_records_sha256": "1944b225e238e360c192c26915505143d5192ae2f47d2bc0df0ca4b45af56fac",
+      "query_rule_hash": "f9aad2a5eba3e3ffe5a628863ba74935818988d90547223535108ce49697b237",
+      "source_type": "OWNER_DECLARED_EXPORT"
+    },
+    "finding_observation_complete": false,
+    "service_id": "owner-release-ledger"
+  },
+  "snapshot": {},
+  "source_cutoff": "2026-08-18T06:12:05Z",
+  "time_model": "OWNER_RECORDS_RETROSPECTIVE",
+  "zh_anchor": {
+    "audit_time_basis": "v23_source_manifest.csv export_time_utc = 2026-10-20T14:45:00Z (committed provider manifest)",
+    "cutoff_basis": "ingestion of the recorded deployment event itself; the identity-pending signal is the subject",
+    "gate_construction": {
+      "declared_in": "scenarios/owner_records/DERIVATION.md",
+      "rule": "each approval/deployment row yields one required gate; disposition=admitted maps to PASS, every other value to FAIL"
+    },
+    "r4_voucher": {
+      "derived_sha256": {
+        "R4_CHANGE_RECORD_260820_001.csv": "8b6d341904a86f3e5685903b822247c5f1e0221531a14281716349dc10727155",
+        "R4_CHANGE_RECORD_260820_004.csv": "bf3bffdace7a8113ae234b09df9e9cc0233cd0f1eb9fb0454e87fa782c50e9d2",
+        "R4_CHANGE_RECORD_260820_007.csv": "a3405312192738ff936516dec4c6bd5f7d9fab19fbbf5a4b1321911f2630043c",
+        "R4_CHANGE_RECORD_260820_010.csv": "067211f9c8f15b93a4f33f054ac78a6df3d93740a86fd6d1115c61fdb61f33a0",
+        "R4_OPERATION_LOG_260820_002.csv": "b83775dae912518eaa338351c200e5c42e4cec6f6c271ac28e3f2e66c74a3eb9",
+        "R4_OPERATION_LOG_260820_005.csv": "fdc0483c2551bb357853c5f23d8e8d7d0cab26691ae3d7bc21156cd64150fe19",
+        "R4_OPERATION_LOG_260820_008.csv": "77e78e6812a0156d5b980236c347275e56927bdfddc6126d4f8edcb3ef33124b",
+        "R4_SYSTEM_AUDIT_TRAIL_260820_003.csv": "257f3989ec5b1c4f527c2322103761b834ea72d4bf20edc5eafa58d2e1a3cdb4",
+        "R4_SYSTEM_AUDIT_TRAIL_260820_006.csv": "4df1f906000f2440006f603133ccbe1140a61a15514f0ff855352fdc83347d71",
+        "R4_SYSTEM_AUDIT_TRAIL_260820_009.csv": "d6bb98b02197ce014f478b29c3ae283ddf9531e6b8dd294bf79f6838a46246de"
+      },
+      "directory": "scenarios/owner_records/R4_EVIDENCE",
+      "identity_marker": "EXCLUDED_AS_DUPLICATE_IDENTITY / EVIDENCE_IDENTITY_PENDING",
+      "provider_original_sha256": {
+        "R4_CHANGE_RECORD_260820_001.csv": "70d017188d5cd47ce851d516a12b09169eef196cf3f0ab85fca0b6c71a9fc789",
+        "R4_CHANGE_RECORD_260820_004.csv": "fa6932850e54ec8732d0120c0227ff62af1e085e3c7eab40b861d0052899e1db",
+        "R4_CHANGE_RECORD_260820_007.csv": "4476fb01adae8ad014a2c2fc2928579ea37c9172b6ae24f6e5fd252b6ae8fba8",
+        "R4_CHANGE_RECORD_260820_010.csv": "3d2e3f794831f38e0a29a5c9bff4cdd12754d306a6212a11cb68b4c35d4c05f1",
+        "R4_OPERATION_LOG_260820_002.csv": "6f1156828ed9b7cc6a3b750dae441fcbdf714e5cc873d5af9c725af22d578c94",
+        "R4_OPERATION_LOG_260820_005.csv": "36962a79ad0d8dd77f9772fc061cacec4dfa78f27077aade836b71e9c27aa16b",
+        "R4_OPERATION_LOG_260820_008.csv": "5d32665268b17a62b9c8c19855aa06b42131833c7b9bfc1c7d2afebe0c4ddb35",
+        "R4_SYSTEM_AUDIT_TRAIL_260820_003.csv": "8363e43eeb8a00d00447dfe403c108c191591b24fc619343090866f72a4adc73",
+        "R4_SYSTEM_AUDIT_TRAIL_260820_006.csv": "e7f7644d173aa31f5dce9971c2decbfc290d08b975a7883642f3d8953565fbe5",
+        "R4_SYSTEM_AUDIT_TRAIL_260820_009.csv": "0fba1ba7364f845e724ce804f09c253d5f9a5ee5f1617884569f881101c36813"
+      },
+      "role": "case-external record-review context; not a B2 input"
+    },
+    "source_records": {
+      "committed_sha256": "1944b225e238e360c192c26915505143d5192ae2f47d2bc0df0ca4b45af56fac",
+      "derivation": "scenarios/owner_records_select.py",
+      "file": "scenarios/owner_records/owner_release_records.xlsx",
+      "provider_export_sha256": "5ba663605096de7b4ea65fb5d682ddbdb78b2e6aa3c064bf106637f632379459"
+    }
+  }
+}

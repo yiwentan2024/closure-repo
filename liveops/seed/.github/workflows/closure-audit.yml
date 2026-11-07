@@ -1,0 +1,57 @@
+name: Closure Audit
+# Standard-pipeline extension: audits release-evidence closure of THIS repository
+# for one scenario cycle (source cutoff = that cycle's release/<SID> tag time,
+# audit time = now). Does not gate any release; added alongside CI without
+# modifying it. The run itself mirrors the verdict: green = CLOSED, red = OPEN
+# (the blocking verdict is surfaced, never hidden in a log).
+on:
+  workflow_dispatch:
+    inputs:
+      scenario:
+        description: 'Scenario cycle to audit (e.g. N01)'
+        required: true
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assemble the scenario case from this repository's own records and verify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LIVEOPS_FULL_REPO: ${{ github.repository }}
+          LIVEOPS_SCENARIO: ${{ inputs.scenario }}
+        run: python audit/run_audit.py --repo . --out audit_out
+      - name: Publish the decision to the run summary
+        if: always()
+        env:
+          LIVEOPS_SCENARIO: ${{ inputs.scenario }}
+        run: |
+          python - <<'PY'
+          import json, os
+          r = json.load(open('audit_out/result.json'))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+              f.write(f"## Closure audit — cycle `{os.environ['LIVEOPS_SCENARIO']}`\n\n")
+              f.write(f"**Decision: {r['machine_decision']}**\n\n")
+              f.write(f"- failure codes: `{r['failure_codes'] or '[]'}`\n")
+              f.write(f"- evidence status: `{r['evidence_status']}`\n")
+              f.write(f"- run conclusion mirrors the verdict by design: "
+                      f"green = CLOSED, red = OPEN\n")
+          PY
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: closure-audit-${{ inputs.scenario }}-${{ github.run_id }}
+          path: audit_out/
+          if-no-files-found: warn

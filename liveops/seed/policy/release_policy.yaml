@@ -1,0 +1,8 @@
+# Release policy for the inventory service.
+# The closure auditor checks gate waivers and evidence exclusions against this file.
+release_policy_version: P-1
+service_id: inventory-service
+waivable_gates: [scan]
+waiver_approvers: [@OPERATOR_LOGIN@]
+exclusion_authorities: [qa-lead]
+approved_sources: [stage-deploy-http]

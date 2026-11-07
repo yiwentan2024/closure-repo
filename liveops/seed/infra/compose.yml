@@ -1,0 +1,19 @@
+services:
+  dev:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+    environment: {STAGE_NAME: dev, BIND_HOST: 0.0.0.0, FAIL_HEALTH: '${DEV_FAIL_HEALTH:-0}'}
+    ports: ['18091:8000']
+  qa:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+    environment: {STAGE_NAME: qa, BIND_HOST: 0.0.0.0, FAIL_HEALTH: '${QA_FAIL_HEALTH:-0}', SLOW_MS: '${QA_SLOW_MS:-0}'}
+    ports: ['18092:8000']
+  staging:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+    environment: {STAGE_NAME: staging, BIND_HOST: 0.0.0.0, FAIL_HEALTH: '${STAGING_FAIL_HEALTH:-0}'}
+    ports: ['18093:8000']

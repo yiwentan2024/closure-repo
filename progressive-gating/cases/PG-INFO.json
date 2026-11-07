@@ -1,0 +1,33 @@
+{
+  "id": "PG-INFO",
+  "scenario_family": "I01",
+  "type": "AUDIT_ONLY",
+  "title": "Missing query-scope attestation field",
+  "injection": {
+    "layer": "evidence_scope",
+    "at_stage": null,
+    "description": "The query-scope field query_rule_hash is removed from the collector attestation; the completeness flag, collector version, extracted signals and inventory digest remain."
+  },
+  "baseline_expected": {
+    "dev": "PASS",
+    "qa": "PASS",
+    "staging": "PASS",
+    "first_failure_stage": null,
+    "first_failure_code": null
+  },
+  "audit_expected": {
+    "P0": "NOT_CONFIGURED",
+    "P1": "OPEN",
+    "evidence_status": "NFI",
+    "codes": [
+      "A1_SCOPE_NOT_ATTESTED"
+    ]
+  },
+  "requires_audit_case": true,
+  "required_evidence": [
+    "the missing query-scope field recorded as unavailable; completeness flag and collector version retained",
+    "extracted signals and inventory digest retained",
+    "P1 OPEN with evidence_status NFI and A1_SCOPE_NOT_ATTESTED",
+    "no invented empty-set or default-pass value"
+  ]
+}

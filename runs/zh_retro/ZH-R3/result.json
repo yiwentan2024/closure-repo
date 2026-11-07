@@ -1,0 +1,48 @@
+{
+  "audit_closed_as_of": false,
+  "audit_failures": [
+    {
+      "code": "A2_FINDING_SCOPE_NOT_ATTESTED",
+      "component": "audit",
+      "evidence_status": "NFI",
+      "reason": "unable to show absence of triggering Findings"
+    }
+  ],
+  "audit_time": "2026-10-20T14:45:00Z",
+  "collector_scope_provenance": "OWNER_DECLARED_EXPORT",
+  "evidence_status": "NFI",
+  "failure_codes": [
+    "A1_LATE_DISPOSITION",
+    "ARTIFACT_DIGEST_MISMATCH",
+    "HISTORICAL_SNAPSHOT_INVALID",
+    "A2_FINDING_SCOPE_NOT_ATTESTED"
+  ],
+  "historical_closed_as_of": false,
+  "historical_failures": [
+    {
+      "code": "A1_LATE_DISPOSITION",
+      "component": "historical",
+      "evidence_status": "OPEN",
+      "reason": "SIG-FB-260812-008"
+    },
+    {
+      "code": "ARTIFACT_DIGEST_MISMATCH",
+      "component": "historical",
+      "evidence_status": "OPEN",
+      "reason": "deployed artifact digest differs from pinned build"
+    },
+    {
+      "code": "HISTORICAL_SNAPSHOT_INVALID",
+      "component": "historical",
+      "evidence_status": "NFI",
+      "reason": "frozen snapshot digest missing or invalid"
+    }
+  ],
+  "implementation": "closure-audit-verifier-0.4.0",
+  "input_sha256": "sha256:c2f05615eee3d93e3ad4d0b1d4f0c0c4f2703c388c02746f3e1e849ea3ee9e2f",
+  "machine_decision": "OPEN",
+  "obligations": [],
+  "release_id": "R-FB-2026-08-8.9.3.6-P1",
+  "scope": "NEW_EXECUTABLE_SUBSET_NOT_FROZEN_107_16",
+  "source_cutoff": "2026-08-12T01:55:05Z"
+}

@@ -1,0 +1,546 @@
+{
+  "artifact": {},
+  "audit_time": "2026-10-20T14:45:00Z",
+  "candidates": [
+    {
+      "candidate_id": "CAND-SIG-FB-260812-001",
+      "disposition_id": "OP-SIG-FB-260812-001",
+      "signal_id": "SIG-FB-260812-001",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-002",
+      "disposition_id": "OP-SIG-FB-260812-002",
+      "signal_id": "SIG-FB-260812-002",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-003",
+      "disposition_id": "OP-SIG-FB-260812-003",
+      "signal_id": "SIG-FB-260812-003",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-004",
+      "disposition_id": "OP-SIG-FB-260812-004",
+      "signal_id": "SIG-FB-260812-004",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-005",
+      "disposition_id": "OP-SIG-FB-260812-005",
+      "signal_id": "SIG-FB-260812-005",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-006",
+      "disposition_id": "OP-SIG-FB-260812-006",
+      "signal_id": "SIG-FB-260812-006",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-007",
+      "disposition_id": "OP-SIG-FB-260812-007",
+      "signal_id": "SIG-FB-260812-007",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-008",
+      "disposition_id": "SIG-FB-260812-008#V2",
+      "signal_id": "SIG-FB-260812-008",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-009",
+      "disposition_id": "OP-SIG-FB-260812-009",
+      "signal_id": "SIG-FB-260812-009",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-010",
+      "disposition_id": "OP-SIG-FB-260812-010",
+      "signal_id": "SIG-FB-260812-010",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-011",
+      "disposition_id": "OP-SIG-FB-260812-011",
+      "signal_id": "SIG-FB-260812-011",
+      "state": "RESOLVED"
+    },
+    {
+      "candidate_id": "CAND-SIG-FB-260812-012",
+      "disposition_id": "OP-SIG-FB-260812-012",
+      "signal_id": "SIG-FB-260812-012",
+      "state": "RESOLVED"
+    }
+  ],
+  "dispositions": [
+    {
+      "actor": "ANON-R-01 / Disposition Reviewer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:00:00Z",
+      "disposition_id": "OP-SIG-FB-260812-001",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-001"
+    },
+    {
+      "actor": "ANON-R-01 / Disposition Reviewer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:05:00Z",
+      "disposition_id": "OP-SIG-FB-260812-002",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-002"
+    },
+    {
+      "actor": "ANON-R-02 / Operations Executor",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:10:00Z",
+      "disposition_id": "OP-SIG-FB-260812-003",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-003"
+    },
+    {
+      "actor": "ANON-R-02 / Operations Executor",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:15:00Z",
+      "disposition_id": "OP-SIG-FB-260812-004",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-004"
+    },
+    {
+      "actor": "ANON-R-01 / Disposition Reviewer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:20:00Z",
+      "disposition_id": "OP-SIG-FB-260812-005",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-005"
+    },
+    {
+      "actor": "ANON-R-01 / Disposition Reviewer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:25:00Z",
+      "disposition_id": "OP-SIG-FB-260812-006",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-006"
+    },
+    {
+      "actor": "ANON-R-02 / Operations Executor",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:30:00Z",
+      "disposition_id": "OP-SIG-FB-260812-007",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-007"
+    },
+    {
+      "actor": "ANON-R-02 / Operations Executor",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T02:56:00Z",
+      "disposition_id": "SIG-FB-260812-008#V2",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-008"
+    },
+    {
+      "actor": "ANON-R-03 / Verification Officer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:40:00Z",
+      "disposition_id": "OP-SIG-FB-260812-009",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-009"
+    },
+    {
+      "actor": "ANON-R-03 / Verification Officer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:45:00Z",
+      "disposition_id": "OP-SIG-FB-260812-010",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-010"
+    },
+    {
+      "actor": "ANON-R-03 / Verification Officer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:50:00Z",
+      "disposition_id": "OP-SIG-FB-260812-011",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-011"
+    },
+    {
+      "actor": "ANON-R-03 / Verification Officer",
+      "decision": "RESOLVED",
+      "decision_time": "2026-08-12T01:55:00Z",
+      "disposition_id": "OP-SIG-FB-260812-012",
+      "effective": true,
+      "reason": "owner ledger disposition=admitted",
+      "signal_id": "SIG-FB-260812-012"
+    }
+  ],
+  "findings": [],
+  "gates": [
+    {
+      "evaluated_at": "2026-08-12T01:40:00Z",
+      "gate_id": "G-SIG-FB-260812-009",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "evaluated_at": "2026-08-12T01:45:00Z",
+      "gate_id": "G-SIG-FB-260812-010",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "evaluated_at": "2026-08-12T01:50:00Z",
+      "gate_id": "G-SIG-FB-260812-011",
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "evaluated_at": "2026-08-12T01:55:00Z",
+      "gate_id": "G-SIG-FB-260812-012",
+      "required": true,
+      "status": "PASS"
+    }
+  ],
+  "policy": {
+    "exclusion_authorities": [],
+    "version": "ZH-RETRO-V1",
+    "waivable_gates": [],
+    "waiver_approvers": []
+  },
+  "raw_signals": [
+    {
+      "event_time": "2026-08-12T01:00:00Z",
+      "ingest_time": "2026-08-12T01:00:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-01",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:00:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-001",
+        "operation_receive_time": "2026-08-12 09:00:05",
+        "operation_time": "2026-08-12 09:00:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Disposition Reviewer",
+        "signal_id": "SIG-FB-260812-001",
+        "signal_type": "requirement",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:23bf2351a4c7fa376cc787a190509b7ec7f602b57e0afe2d57bbb45d08299997",
+      "signal_id": "SIG-FB-260812-001",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:05:00Z",
+      "ingest_time": "2026-08-12T01:05:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-01",
+        "authorization_ref": "AUTH-ORIG-R3-K31389-CHG1",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:05:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-002",
+        "operation_receive_time": "2026-08-12 09:05:05",
+        "operation_time": "2026-08-12 09:05:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Disposition Reviewer",
+        "signal_id": "SIG-FB-260812-002",
+        "signal_type": "change",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:09a49c29048cc7ee5c901251e216dc08fe57b14a125b6861f2f0cd89fb357a54",
+      "signal_id": "SIG-FB-260812-002",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:10:00Z",
+      "ingest_time": "2026-08-12T01:10:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-02",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:10:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-003",
+        "operation_receive_time": "2026-08-12 09:10:05",
+        "operation_time": "2026-08-12 09:10:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Operations Executor",
+        "signal_id": "SIG-FB-260812-003",
+        "signal_type": "build",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:08210a540601a93c02f2f9c562a5e644b6b370d090df6640fccd8b6d68a1329e",
+      "signal_id": "SIG-FB-260812-003",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:15:00Z",
+      "ingest_time": "2026-08-12T01:15:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-02",
+        "authorization_ref": "AUTH-ORIG-R3-K51160-TEST1",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:15:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-004",
+        "operation_receive_time": "2026-08-12 09:15:05",
+        "operation_time": "2026-08-12 09:15:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Operations Executor",
+        "signal_id": "SIG-FB-260812-004",
+        "signal_type": "test",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:6523ab3261acd64b9e32b3c4df8a0fe62ee3f144e70f14092bcb52f0519809f4",
+      "signal_id": "SIG-FB-260812-004",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:20:00Z",
+      "ingest_time": "2026-08-12T01:20:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-01",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:20:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-005",
+        "operation_receive_time": "2026-08-12 09:20:05",
+        "operation_time": "2026-08-12 09:20:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Disposition Reviewer",
+        "signal_id": "SIG-FB-260812-005",
+        "signal_type": "requirement",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:306985fd01ceb235b65704022c48163c564797a7eb42016f337c7d8d81e01816",
+      "signal_id": "SIG-FB-260812-005",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:25:00Z",
+      "ingest_time": "2026-08-12T01:25:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-01",
+        "authorization_ref": "AUTH-ORIG-R3-K31389-CHG2",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:25:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-006",
+        "operation_receive_time": "2026-08-12 09:25:05",
+        "operation_time": "2026-08-12 09:25:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Disposition Reviewer",
+        "signal_id": "SIG-FB-260812-006",
+        "signal_type": "change",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:032dffaa0e5e286a30b337998be90a2c9f10cbba9da74107470435dd27a1c970",
+      "signal_id": "SIG-FB-260812-006",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:30:00Z",
+      "ingest_time": "2026-08-12T01:30:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-02",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:30:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-007",
+        "operation_receive_time": "2026-08-12 09:30:05",
+        "operation_time": "2026-08-12 09:30:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Operations Executor",
+        "signal_id": "SIG-FB-260812-007",
+        "signal_type": "build",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:b1791be1f60fd922c1b7a9e64904769363aa16cb58db11737480e8e1a56fbd2e",
+      "signal_id": "SIG-FB-260812-007",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:35:00Z",
+      "ingest_time": "2026-08-12T01:35:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-02",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "provisional",
+        "effective_from": "2026-08-12 09:35:05",
+        "effective_to": "2026-08-12 10:56:05",
+        "operation_id": "OP-SIG-FB-260812-008",
+        "operation_receive_time": "2026-08-12 09:35:05",
+        "operation_time": "2026-08-12 09:35:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Operations Executor",
+        "signal_id": "SIG-FB-260812-008",
+        "signal_type": "test",
+        "superseded_by": "SIG-FB-260812-008#V2",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:3fb22bd74399614f42fb4fd242b7783a855f329b031d49a0874529c5739507eb",
+      "signal_id": "SIG-FB-260812-008",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:40:00Z",
+      "ingest_time": "2026-08-12T01:40:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-03",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:40:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-009",
+        "operation_receive_time": "2026-08-12 09:40:05",
+        "operation_time": "2026-08-12 09:40:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Verification Officer",
+        "signal_id": "SIG-FB-260812-009",
+        "signal_type": "approval",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:3c0a2747436ac93631f8b3648da56a2bbdbe5fa0c057c1b3eebf5a3cf2eabf35",
+      "signal_id": "SIG-FB-260812-009",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:45:00Z",
+      "ingest_time": "2026-08-12T01:45:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-03",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:45:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-010",
+        "operation_receive_time": "2026-08-12 09:45:05",
+        "operation_time": "2026-08-12 09:45:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Verification Officer",
+        "signal_id": "SIG-FB-260812-010",
+        "signal_type": "approval",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:a7351956ef673405e12e471c0220e5476e22fcdbf66b455cbc9d7f01b231c240",
+      "signal_id": "SIG-FB-260812-010",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:50:00Z",
+      "ingest_time": "2026-08-12T01:50:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-03",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:50:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-011",
+        "operation_receive_time": "2026-08-12 09:50:05",
+        "operation_time": "2026-08-12 09:50:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Verification Officer",
+        "signal_id": "SIG-FB-260812-011",
+        "signal_type": "deployment",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:789aa3296c0f248243ff186cc26acdcf6b802993fb8bb63d9b363da4d6ff58ab",
+      "signal_id": "SIG-FB-260812-011",
+      "source_id": "att-02-ledger"
+    },
+    {
+      "event_time": "2026-08-12T01:55:00Z",
+      "ingest_time": "2026-08-12T01:55:05Z",
+      "payload": {
+        "actor_anon": "ANON-R-03",
+        "authorization_ref": "REGULAR_ROLE_PERMISSION",
+        "disposition": "admitted",
+        "effective_from": "2026-08-12 09:55:05",
+        "effective_to": "",
+        "operation_id": "OP-SIG-FB-260812-012",
+        "operation_receive_time": "2026-08-12 09:55:05",
+        "operation_time": "2026-08-12 09:55:00",
+        "release_id": "R-FB-2026-08-8.9.3.6-P1",
+        "role_at_time": "Verification Officer",
+        "signal_id": "SIG-FB-260812-012",
+        "signal_type": "deployment",
+        "superseded_by": "",
+        "supersedes": "",
+        "version": "1"
+      },
+      "payload_sha256": "sha256:2475a4c3041abb6604fe3224d311c01a61c32fd634448fa613c6bfc7e98d668f",
+      "signal_id": "SIG-FB-260812-012",
+      "source_id": "att-02-ledger"
+    }
+  ],
+  "release_id": "R-FB-2026-08-8.9.3.6-P1",
+  "schema_version": "E2-case-1",
+  "scope": {
+    "approved_sources": [
+      "att-02-ledger"
+    ],
+    "collector_attestation": {
+      "collector_version": "provider export pipeline",
+      "complete": true,
+      "declared_export_sha256": "5ba663605096de7b4ea65fb5d682ddbdb78b2e6aa3c064bf106637f632379459",
+      "inventory_sha256": "sha256:b9a2124e608f64df97d4a8522b22b4f6a624cb5fc9fc86dbd57cde8e51663ac1",
+      "materialized_records_sha256": "1944b225e238e360c192c26915505143d5192ae2f47d2bc0df0ca4b45af56fac",
+      "query_rule_hash": "f9aad2a5eba3e3ffe5a628863ba74935818988d90547223535108ce49697b237",
+      "source_type": "OWNER_DECLARED_EXPORT"
+    },
+    "finding_observation_complete": false,
+    "service_id": "owner-release-ledger"
+  },
+  "snapshot": {},
+  "source_cutoff": "2026-08-12T01:55:05Z",
+  "time_model": "OWNER_RECORDS_RETROSPECTIVE",
+  "zh_anchor": {
+    "audit_time_basis": "v23_source_manifest.csv export_time_utc = 2026-10-20T14:45:00Z (committed provider manifest)",
+    "cutoff_basis": "release-window end = ingestion of the second deployment at 09:55:05 (record time); the 10:56 post-release re-adjudication deliberately remains post-cutoff; the supplied summary face 11:00/11:10 is a declared anonymization-drift label, not the record time",
+    "gate_construction": {
+      "declared_in": "scenarios/owner_records/DERIVATION.md",
+      "rule": "each approval/deployment row yields one required gate; disposition=admitted maps to PASS, every other value to FAIL"
+    },
+    "source_records": {
+      "committed_sha256": "1944b225e238e360c192c26915505143d5192ae2f47d2bc0df0ca4b45af56fac",
+      "derivation": "scenarios/owner_records_select.py",
+      "file": "scenarios/owner_records/owner_release_records.xlsx",
+      "provider_export_sha256": "5ba663605096de7b4ea65fb5d682ddbdb78b2e6aa3c064bf106637f632379459"
+    }
+  }
+}
